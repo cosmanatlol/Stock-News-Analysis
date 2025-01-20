@@ -34,7 +34,7 @@ def ap_scraper(soup):
    articles = []
    for x in soup.find_all(class_ = 'PagePromoContentIcons-text'):
       articles.append(x.text)
-   return articles[-1:1]
+   return articles[1:-1]
 
 def abc_scraper(soup):
    articles = []
