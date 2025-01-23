@@ -38,7 +38,7 @@ def ap_scraper(soup):
 
 def abc_scraper(soup):
    articles = []
-   for x in soup.find_all(class_ = 'PFoxV eBpQD rcQBv bQtjQ lQUdN GpQCA mAkiF FvMyr WvoqU nPLLM tuAKv ZfQkn GdxUi'):
+   for x in soup.find_all(class_ = 'News__Content__Container'):
       articles.append(x.text)
    return articles
 
@@ -48,8 +48,8 @@ class Scraper:
         """
         urls: dictionary with key being news source (nytimes, cnn, stat, ap, abc) and value being list of URLs
         update_time: int, how often to scrape in seconds
-        path_download: string, where to store the DataFrame as JSON
-        path_init: string, path to an existing JSON with headline information
+        path_download: string, where to store the DataFrame as csv
+        path_init: string, path to an existing csv with headline information
         """
         self.urls = urls
         self.update_time = update_time
@@ -69,13 +69,12 @@ class Scraper:
     def _scrape(self):
         print(f"Started scraping at {datetime.datetime.now().time()}")
         
-        # Initialize or load the DataFrame
-        if self.path_init and pd.io.common.file_exists(self.path_init):
-            df = pd.read_json(self.path_init)
+        if self.path_init:
+            df = pd.read_csv(self.path_init)
         else:
             df = pd.DataFrame(columns=['headline', 'date', 'source'])
-        
-        timestamp = time.time()
+        self.path_init = self.path_download
+        timestamp = datetime.datetime.now().isoformat()
         scrap_dict = {
             'nytimes': nytimes_scraper,
             'cnn': cnn_scraper,
@@ -100,9 +99,9 @@ class Scraper:
                 time.sleep(5)  
         
         new_data = pd.DataFrame({"headline": headline, "date": date, "source": sources})
-        df = pd.concat([df, new_data], ignore_index=True).drop_duplicates(subset='headline')
+        df = pd.concat([df, new_data],  ).drop_duplicates(subset='headline')
         
-        df.to_json(self.path_download)
+        df.to_csv(self.path_download, index=False)
         print(f"Finished scraping at {datetime.datetime.now().time()}")
         
         if self.running:
