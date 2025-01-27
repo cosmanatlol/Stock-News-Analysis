@@ -94,7 +94,7 @@ class Scraper:
                     date.extend([timestamp] * len(new_headlines))
                     headline.extend(new_headlines)
                     sources.extend([source] * len(new_headlines))
-                except requests.RequestException as e:
+                except Exception as e:
                     print(f"Error fetching headlines from {source}: {e}")
                 time.sleep(5)  
         
