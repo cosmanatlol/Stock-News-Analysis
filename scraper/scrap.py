@@ -115,3 +115,10 @@ class Scraper:
         self.running = False
         print("Scraping stopped.")
          
+urls = {'nytimes':['https://www.nytimes.com/section/us','https://www.nytimes.com/section/world', 'https://www.nytimes.com/section/business'],
+        'cnn':['https://www.cnn.com/us','https://www.cnn.com/world','https://www.cnn.com/business', 'https://www.cnn.com/politics', 'https://www.cnn.com/health'],
+        'stat': ['https://www.statnews.com/latest/'],
+        'ap':['https://apnews.com/world-news', 'https://apnews.com/us-news','https://apnews.com/politics','https://apnews.com/business','https://apnews.com/science'],
+        'abc': ['https://abcnews.go.com/Business/', 'https://abcnews.go.com/Health', 'https://abcnews.go.com/Technology', 'https://abcnews.go.com/US']}
+bot = Scraper(urls, 60*30, 'data.csv', "data.csv")
+bot.start()
