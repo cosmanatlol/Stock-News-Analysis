@@ -8,9 +8,16 @@ from nltk.tokenize import word_tokenize
 from sentence_transformers import SentenceTransformer
 from sklearn.cluster import AgglomerativeClustering
 
-nltk.download('stopwords')
-nltk.download('punkt_tab')
-nltk.download('wordnet')
+try:
+    nltk.data.find('stopwords')
+    nltk.data.find('punkt_tab')
+    nltk.data.find('wordnet')
+    nltk.data.find('punkt')
+except LookupError:
+    nltk.download('stopwords')
+    nltk.download('punkt_tab')
+    nltk.download('wordnet')
+    nltk.download('punkt')
 
 stop_words = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
