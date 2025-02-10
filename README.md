@@ -1,3 +1,6 @@
-# Stock-News-Analysis
-To download environment run "conda env create -f environment.yml" and then run "conda activate stock-news-env".\\
-Stock selection folder contains code on how stocks were selected initially. Scraper folder contains code on how to scrape data with test.ipynb as an example. llm folder contains the pipeline for headlines including all three layers to generate a prediction. llm_tester.ipynb includes an example on how to run functions. Tech analysis inicludes files on the technical analysis and final model using headlines.
+## Stock-News-Analysis
+This is analysis of headlines and how it relates to a larger portfolio in the stock market with all tools given.
+# Conda Environment
+To download environment run "conda env create -f environment.yml" and then run "conda activate stock-news-env". 
+# How to use
+Stock selection folder contains code on how stocks were selected initially. Scraper folder contains code on how to scrape data with test.ipynb as an example and scrap.py being source code. headline_analysis folder contains the pipeline to create predictions based on headlines including all three layers to generate a prediction and example.ipyb as an example of how to use the pipeline. Tech analysis includes files on the technical analysis and final model using headlines.
