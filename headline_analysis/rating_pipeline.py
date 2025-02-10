@@ -5,13 +5,14 @@ import time
 
 def rating_pipeline(headlines_path, stocks, store_path, start = None, end = None, merge_path = None):
     """
-    headlines_path: path to csv file with headlines
+    headlines_path: str path to csv file with headlines
     stocks: dictionary with keys as sectors and values as list of stocks
-    store_path: path to store the final dataframe
-    start: start date for the headlines, default None which uses the minimum date
-    end: end date for the headlines, default None which uses the maximum date
+    store_path: str path to store the final dataframe
+    merge_path: str path to csv file to merge with the final dataframe
+    start: timestamp for start date for the headlines, default None which uses the minimum date
+    end: timestamp for end date for the headlines, default None which uses the maximum date
 
-    output: dataframe with stock, date, and rating
+    output: dataframe with stock, date, and rating. Rating is for the prediction fir the day after the date
     """
     data = pd.read_csv(headlines_path)
     data['date'] = pd.to_datetime(data['date']).dt.floor('D')

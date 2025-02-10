@@ -3,15 +3,14 @@ from pydantic import BaseModel, Field, ValidationError
 from openai import OpenAI
 import json
 import os
+
+client = OpenAI(api_key="replace with key")
 def headline_rating(headlines: List[str], stock: str,) -> int:
     """
     headline: str of headline
     stock: stock of relevance
     output: integer from -5 to 5 indicating whether each headline is relevant to the stock
     """ 
-    
-    client = OpenAI(api_key='replace with openai key')
-    
     system_prompt = f"""You are analyzing the impact of news headlines on {stock}'s stock price within the next day.  
             Return a json object of {{query": integer}} from -5 to 5, inclusive, representing the expected price movement:  
 
@@ -58,13 +57,10 @@ def relevance_extractor(headlines: List[str], sector: str) -> List[bool]:
     sector: sector of relevance
     output: booleans indicating whether headline is relevant to the sector
     """ 
-    client = OpenAI(api_key='replace with openai key')
-    
-
-    system_prompt = """User will a headline. Assess whether each headline is relevant to determining if a stock in {sector} will rise or decrease. 
+    system_prompt = f"""User will a headline. Assess whether each headline is relevant to determining if a stock in {sector} will rise or decrease. 
         Return a json object with key "query" and value boolean, indicating its relevance (True means relevant, False means irrelevent). Try to pick up on any small details that might be relevant like
         a headline about supply of a sector or any information that might affect the stock price. Key should be 'query' and value should be a single boolean.
-         Make sure booleans are True or False, not true or false.
+        Make sure booleans are True or False, not true or false.
         """
     user_prompt = "||".join(headlines)
     messages = [{"role": "system", "content": system_prompt},
