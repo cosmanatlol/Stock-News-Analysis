@@ -19,4 +19,4 @@ client = OpenAI(api_key="replace with key")
 and lastly there is rating_pipeline which puts together all the filters together and returns a score based on a stock. example.ipynb shows how to use the pipeline.
 
 ### Technical Analysis
-tech_analysis folder includes ...
+tech_analysis folder includes all of the technical inicators used which can be explored in tech_analysis.ipynb, preprocessing pipeling in preprocessing.py, and final model in Final_model.ipynb.
