@@ -20,3 +20,6 @@ and lastly there is rating_pipeline which puts together all the filters together
 
 ### Technical Analysis
 tech_analysis folder includes all of the technical inicators used which can be explored in tech_analysis.ipynb, preprocessing pipeling in preprocessing.py, and final model in Final_model.ipynb.
+
+Addiontially, website can be found at https://cosmanatlol.github.io/stock_news/ with the website code at https://github.com/cosmanatlol/stock_news/.
+
