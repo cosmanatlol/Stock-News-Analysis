@@ -1,0 +1,14 @@
+nltk
+pandas
+sentence_transformers 
+scikit-learn
+openai
+pydantic
+yfinance
+matplotlib
+numpy
+bs4
+requests
+datetime
+xgboost
+seaborn
