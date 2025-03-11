@@ -3,11 +3,10 @@
 <a href='https://cosmanatlol.github.io/stock_news/'><img src='https://img.shields.io/badge/Project-Page-Green'></a>  <a href='https://drive.google.com/file/d/1dkq4ri51IEfyeml_lDctHNS7Smg8w7Ks/view?usp=sharing'><img src='https://img.shields.io/badge/Report-PDF-blue'> <a href='https://drive.google.com/file/d/1nVCbm3XLMlSARJqzMe1d8tLVUxhGtDmH/view?usp=sharing'><img src='https://img.shields.io/badge/Poster-PDF-red'> 
 
 This is analysis of news headlines and how it relates to the stock market with predictions based on headlines and technical indicators
-## Conda Environment
+## Environment
 To download environment run the following:
 ```
-conda env create -f environment.yml
-conda activate stock-news-env
+pip install -r requirements.txt
 ```
 ## How to use
 ### Scraper
